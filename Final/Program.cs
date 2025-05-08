@@ -121,7 +121,6 @@ do
             }
             Console.WriteLine("\n\rPress the Enter key to continue");
             readResult = Console.ReadLine();
-
             break;
 
         case "2":

@@ -89,81 +89,133 @@ do
     Console.WriteLine("Enter your selection number (or type Exit to exit the program)");
 
     readResult = Console.ReadLine();
+    if (readResult != null)
+    {
+        menuSelection = readResult.ToLower();
+        // NOTE: We could put a do statement around the menuSelection entry to ensure a valid entry, but we
+        //  use a conditional statement below that only processes the valid entry values, so the do statement 
+        //  is not required here. 
+    }
+
+
+
+
+    switch (menuSelection)
+    {
+        case "1":
+            //List all of our current pet information
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 0] != "ID #: ")
+                {
+                    Console.WriteLine(ourAnimals[i, 0]);
+                    for (int j = 0; j < 6; j++)
+                    {
+                        Console.WriteLine(ourAnimals[i, j]);
+                    }
+                }
+
+            }
+            Console.WriteLine("Press the enter key to continue.");
+            readResult = Console.ReadLine();
+            break;
+
+        case "2":
+            //add a new animal friend to the ourAnimal array
+            string anotherPet = "y";
+            int petCount = 0;
+
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 0] != "ID #: ")
+                {
+                    petCount += 1;
+                }
+            }
+            if (petCount < maxPets)
+            {
+                Console.WriteLine($"We currently have {petCount} pets that need homes. We can manage {(maxPets - petCount)} more.");
+            }
+
+            while (anotherPet == "y" && petCount < maxPets)
+            {
+                // increment petCount (the array is zero-based, so we increment the counter after adding to the array)
+                petCount = petCount + 1;
+
+                // check maxPet limit
+
+                bool validEntry = false;
+                // get species (cat or dog) - string animalSpecies is a required field 
+                do
+                {
+                    Console.WriteLine("\n\rEnter 'dog' or 'cat' to begin a new entry");
+                    readResult = Console.ReadLine();
+                    if (readResult != null)
+                    {
+                        animalSpecies = readResult.ToLower();
+                        if (animalSpecies != "dog" && animalSpecies != "cat")
+                        {
+                            validEntry = false;
+                        }
+                        else
+                        {
+                            validEntry = true;
+                        }
+                    }
+                } while (validEntry == false);
+                // build the animal the ID number - for example C1, C2, D3 (for Cat 1, Cat 2, Dog 3)
+                animalID = animalSpecies.Substring(0, 1) + (petCount + 1).ToString();
+                
+            }
+            ;
+            Console.WriteLine("Press the Enter key to continue.");
+            readResult = Console.ReadLine();
+            break;
+
+        case "3":
+            // Ensure animal ages and physical descriptions are complete
+            Console.WriteLine("Challenge Project - please check back soon to see progress.");
+            Console.WriteLine("Press the Enter key to continue.");
+            readResult = Console.ReadLine();
+            break;
+
+        case "4":
+            // Ensure animal ages and physical descriptions are complete
+            Console.WriteLine("Challenge Project - please check back soon to see progress.");
+            Console.WriteLine("Press the Enter key to continue.");
+            readResult = Console.ReadLine();
+            break;
+
+        case "5":
+            // Ensure animal ages and physical descriptions are complete
+            Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
+            Console.WriteLine("Press the Enter key to continue.");
+            readResult = Console.ReadLine();
+            break;
+
+        case "6":
+            // Ensure animal ages and physical descriptions are complete
+            Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
+            Console.WriteLine("Press the Enter key to continue.");
+            readResult = Console.ReadLine();
+            break;
+
+        case "7":
+            // Ensure animal ages and physical descriptions are complete
+            Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
+            Console.WriteLine("Press the Enter key to continue.");
+            readResult = Console.ReadLine();
+            break;
+
+        case "8":
+            // Ensure animal ages and physical descriptions are complete
+            Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
+            Console.WriteLine("Press the Enter key to continue.");
+            readResult = Console.ReadLine();
+            break;
+
+        default:
+            break;
+    }
 
 } while (menuSelection != "exit");
-if (readResult != null)
-{
-    menuSelection = readResult.ToLower();
-}
-
-Console.WriteLine($"You selected menu option {menuSelection}.");
-Console.WriteLine("Press the Enter key to continue");
-
-// pause code execution 
-readResult = Console.ReadLine();
-
-
-switch (menuSelection)
-{
-    case "1":
-        //List all of our current pet information
-       for(int i = 0; i < maxPets; i++){
-
-       }
-        Console.WriteLine("Press the enter key to continue.");
-        readResult = Console.ReadLine();
-        break;
-
-    case "2":
-        //add a new animal friend to the ourAnimal array
-        Console.WriteLine("this app feacture is coming soon - please check back to see progress.");
-        Console.WriteLine("Press the enter key to continue.");
-        readResult = Console.ReadLine();
-        break;
-
-    case "3":
-        // Ensure animal ages and physical descriptions are complete
-        Console.WriteLine("Challenge Project - please check back soon to see progress.");
-        Console.WriteLine("Press the Enter key to continue.");
-        readResult = Console.ReadLine();
-        break;
-
-    case "4":
-        // Ensure animal ages and physical descriptions are complete
-        Console.WriteLine("Challenge Project - please check back soon to see progress.");
-        Console.WriteLine("Press the Enter key to continue.");
-        readResult = Console.ReadLine();
-        break;
-
-    case "5":
-        // Ensure animal ages and physical descriptions are complete
-        Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
-        Console.WriteLine("Press the Enter key to continue.");
-        readResult = Console.ReadLine();
-        break;
-
-    case "6":
-        // Ensure animal ages and physical descriptions are complete
-        Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
-        Console.WriteLine("Press the Enter key to continue.");
-        readResult = Console.ReadLine();
-        break;
-
-    case "7":
-        // Ensure animal ages and physical descriptions are complete
-        Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
-        Console.WriteLine("Press the Enter key to continue.");
-        readResult = Console.ReadLine();
-        break;
-
-    case "8":
-        // Ensure animal ages and physical descriptions are complete
-        Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
-        Console.WriteLine("Press the Enter key to continue.");
-        readResult = Console.ReadLine();
-        break;
-
-    default:
-        break;
-
-}
